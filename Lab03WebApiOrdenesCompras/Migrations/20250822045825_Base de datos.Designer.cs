@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab03WebApiOrdenesCompras.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250822035517_CustomerColumnsAdded")]
-    partial class CustomerColumnsAdded
+    [Migration("20250822045825_NombreDeLaMigracion")]
+    partial class NombreDeLaMigracion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
