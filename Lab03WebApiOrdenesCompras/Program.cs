@@ -1,4 +1,4 @@
-using Lab03WebApiOrdenesCompras.Datos;
+using Lab03WebApiOrdenesCompras.Models;
 using Lab03WebApiOrdenesCompras.Services;
 using Microsoft.EntityFrameworkCore;
 

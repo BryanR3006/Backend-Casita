@@ -26,8 +26,19 @@ public partial class Customer
     public string? Country { get; set; }
 
     [StringLength(20)]
+    [RegularExpression("^[0-9]{10}$", ErrorMessage = "El número debe tener 10 dígitos dahhhhhhh.")]
     public string? Phone { get; set; }
+    //Correo electrónico 
+    [StringLength(100)]
+    [EmailAddress(ErrorMessage = "El formato del correo electrónico no es válido.")]
+    public string? Email { get; set; }
+    //Fecha 
+
+    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+    public DateTime? FechaNacimiento { get; set; }
 
     [InverseProperty("Customer")]
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+
+
 }
