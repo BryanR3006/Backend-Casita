@@ -34,6 +34,9 @@ public partial class Supplier
 
     [StringLength(30)]
     public string? Fax { get; set; }
+    
+    [StringLength(30)]
+    public string? email {get; set;}
 
     [InverseProperty("Supplier")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();

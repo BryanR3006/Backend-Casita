@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lab03WebApiOrdenesCompras.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250822045825_NombreDeLaMigracion")]
-    partial class NombreDeLaMigracion
+    [Migration("20250828035016_SyncNuevoCampo")]
+    partial class SyncNuevoCampo
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -209,6 +209,10 @@ namespace Lab03WebApiOrdenesCompras.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Phone")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("email")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 

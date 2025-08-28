@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lab03WebApiOrdenesCompras.Models;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace Lab03WebApiOrdenesCompras.Controllers
 {
@@ -77,6 +78,11 @@ namespace Lab03WebApiOrdenesCompras.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
+            bool producto = await _context.Products.AnyAsync(p=> p.ProductName == product.ProductName);
+            if (producto)
+            {
+                return BadRequest(new { Message = "El proudto ya esta registrado " });
+            }
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 

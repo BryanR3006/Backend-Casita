@@ -209,6 +209,10 @@ namespace Lab03WebApiOrdenesCompras.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<string>("email")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.HasKey("Id")
                         .HasName("PK_SUPPLIER");
 

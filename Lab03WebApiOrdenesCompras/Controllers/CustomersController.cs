@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Lab03WebApiOrdenesCompras.Models;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 namespace Lab03WebApiOrdenesCompras.Controllers
 {
@@ -73,15 +74,27 @@ namespace Lab03WebApiOrdenesCompras.Controllers
         }
 
         // POST: api/Customers
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Customer>> PostCustomer(Customer customer)
         {
+            // Validar que el número de teléfono no exista ya
+            bool numero = await _context.Customers.AnyAsync(c => c.Phone == customer.Phone);
+            if (numero)
+            {
+                return BadRequest(new { Message = "Este número ya está registrado." });
+            }
+            //Validar correoooooooooooo
+            bool correo = await _context.Customers.AnyAsync(e => e.Email == customer.Email);
+            if (correo ){
+                return BadRequest(new { Message = "Este cooreo ya esta register" });
+            }
+
             _context.Customers.Add(customer);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetCustomer", new { id = customer.Id }, customer);
         }
+
 
         // DELETE: api/Customers/5
         [HttpDelete("{id}")]
