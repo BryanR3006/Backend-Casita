@@ -15,6 +15,21 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<ApplicationDbContext>();
+        context.Database.Migrate(); // ← Crear BD y aplicar migraciones
+        Console.WriteLine(" Base de datos migrada exitosamente");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($" Error migrando base de datos: {ex.Message}");
+    }
+}
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
