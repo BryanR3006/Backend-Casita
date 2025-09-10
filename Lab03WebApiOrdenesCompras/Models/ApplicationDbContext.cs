@@ -25,9 +25,6 @@ public partial class ApplicationDbContext : DbContext
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=BRAYAN;Database=OrdenesCompra_dev_db;Trusted_Connection=True;TrustServerCertificate=True;");
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Customer>(entity =>
